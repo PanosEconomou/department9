@@ -6,7 +6,8 @@
     "content": "Hey — just a heads-up.\nThat memo about the ID badge changes?\nI know it says effective Monday, but I saw someone get flagged today for not updating.\nMight be good to do it early.\n\nYou didn’t hear this from me.",
     "status": "unread",
     "action": "",
-    "notes": ""
+    "notes": "",
+    "available": "True"
   },
   {
     "id": "DOC-0023",
@@ -15,7 +16,8 @@
     "content": "The kitchen on Floor 4A will be undergoing deep-clean protocols from 0700 to 0930.\n\nDo not access the zone or question sealed signage.\nIf you observe unexpected activity, do not engage — please report to Security Liaison 2.",
     "status": "unread",
     "action": "",
-    "notes": ""
+    "notes": "",
+    "available": "True"
   },
   {
     "id": "DOC-0041",
@@ -24,6 +26,7 @@
     "content": "This quarter's performance incentives have been reallocated for observability purposes.\n\nWe appreciate your continued patience and contribution to morale fidelity.",
     "status": "unread",
     "action": "",
-    "notes": ""
+    "notes": "",
+    "available": "True"
   }
 ]

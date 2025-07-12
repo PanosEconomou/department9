@@ -16,6 +16,8 @@ class DocumentView(Container):
         
         with TabbedContent(initial=self.data[0]["id"]):
             for document in self.data:
+                if document["available"] != "True":
+                    continue
                 with TabPane(document["id"],id=document["id"]):
                     yield Static(f"[bold]Document ID:[/bold] {document["id"]}")
                     yield Static(f"[bold]From:[/bold] {document["sender"]}")
