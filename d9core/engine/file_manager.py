@@ -1,9 +1,10 @@
 import json
+from importlib.resources import files
 
-DOCUMENT_PATH = 'data/documents.json'
+DOCUMENT_PATH = files("d9core.data") / "documents.json"
 
 def get_documents() -> dict:
-    with open(DOCUMENT_PATH, 'r') as file:
+    with DOCUMENT_PATH.open("r") as file:
         data = json.load(file)
 
     return data
