@@ -8,13 +8,13 @@ SYSTEM_DOCS = files("d9core.data") / "documents.json"
 USER_DIR   = Path(os.environ.get("XDG_DATA_HOME", Path.home()/".local"/"share")) / "d9core"
 USER_DOCS  = USER_DIR / "documents.json"
 
-def ensure_user_docs():
+def ensure_user_docs(reset:bool = False) -> None:
     USER_DIR.mkdir(parents=True, exist_ok=True)
-    if not USER_DOCS.exists():
+    if not USER_DOCS.exists() or reset:
         with SYSTEM_DOCS.open("rb") as src, USER_DOCS.open("wb") as dst:
             shutil.copyfileobj(src, dst)
 
-ensure_user_docs()
+ensure_user_docs(reset=True)
 
 def get_documents() -> list[dict]:
     with USER_DOCS.open("r") as file:
