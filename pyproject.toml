@@ -6,4 +6,4 @@ description = "Interactive terminal-based narrative game"
 authors = [{name = "Panos Oikonomou", email = "po524@nyu.edu"}]
 
 [project.scripts]
-d9core = "d9core.main:main"
+d9core = "d9core.main:run_terminal"
