@@ -30,6 +30,6 @@ class Terminal(App):
             "textual-dark" if self.theme == "textual-light" else "textual-light"
         )
 
-if __name__ == "__main__":
+def run_terminal() -> None:
     app = Terminal()
     app.run()
