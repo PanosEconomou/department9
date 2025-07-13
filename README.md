@@ -27,5 +27,11 @@ ollama run hermes3
 
 to downloand and install the model and make sure it works. That should be all the setup!
 
+Oh BTW! To run this do
 
+```shell
+d9core
+```
+
+just make sure you have activated the right virtual environment.
 
