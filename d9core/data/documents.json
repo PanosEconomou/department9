@@ -28,5 +28,145 @@
     "action": "",
     "notes": "",
     "available": "True"
+  },
+  {
+    "id": "DOC-0058",
+    "title": "Network Diagnostic Alert",
+    "sender": "it-support@intra.d9",
+    "content": "System automated report: intermittent packet loss detected in Segment 3B.\nLogs show a 0.02% error rate between 0200–0300.\nRecommend scheduling a maintenance window Tuesday.\n\nNo further action required unless patterns persist.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0062",
+    "title": "Travel Authorization Request",
+    "sender": "hr-ops@intra.d9",
+    "content": "Employee Ida Wu requests travel to Sector 7F Depot for cross-training: 07/15/2025 – 07/18/2025.\nAll required forms have been submitted.\n\nSupervisor approval pending.\nPlease expedite if possible.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0090",
+    "title": "Data Truncation Notice",
+    "sender": "analytics@intra.d9",
+    "content": "During last night's data aggregation job, 12 records were truncated due to schema mismatch.\nAffected tables: user_logs, session_events.\n\nNo downstream errors observed. Please review at your convenience.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0105",
+    "title": "Canteen Inventory Discrepancy",
+    "sender": "facilities@intra.d9",
+    "content": "Inventory check at the staff canteen shows 30% less beverage stock than predicted by demand models.\n\nRecommend audit of Day 3 consumption logs.\n\nAdditional supplies ordered as precaution.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0113",
+    "title": "Annual Policy Update Reminder",
+    "sender": "policies@intra.d9",
+    "content": "This is a reminder to review the updated Workplace Conduct Guidelines version 4.2.\n\nPlease confirm by end of month via the acknowledgment form.\n\nYour certification is required for system access continuity.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0121",
+    "title": "Archive Retrieval Error",
+    "sender": "records@intra.d9",
+    "content": "Attempted to retrieve archived correspondence from April 12, 2024 — entry returns a ‘404: record not found’.\nSystem time-stamp shows the log was modified at 02:13, but no user ID is associated with that write.\n\nPlease verify archive integrity before proceeding.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0134",
+    "title": "Unofficial Reminder",
+    "sender": "liaison@intra.d9",
+    "content": "Not an official memo, but heads-up: brown envelope deliveries to Building 5B at midnight have spiked from 2/week to 5/week.\nNo one’s asked questions yet—but some of the envelopes are stamped with the old Department 7 seal.\n\nKeep this between us.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0147",
+    "title": "System Clock Drift",
+    "sender": "it-support@intra.d9",
+    "content": "Several machines in Sector C report system clocks drifting by +3.6 seconds every hour.\nLogs indicate a manual override at 23:45 yesterday, user unknown.\n\nRecommend a security sweep of local servers.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0159",
+    "title": "Conflicting Orders",
+    "sender": "ops-coord@intra.d9",
+    "content": "Received two directives for the same operation on 07/12/2025:\n— Directive A (ID 4582): Initiate standard protocol.\n— Directive B (ID 4610): Hold all activity until further notice.\n\nSource headers match—but signatures don’t. Which takes precedence?",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0172",
+    "title": "Access Log Discrepancy",
+    "sender": "security-ops@intra.d9",
+    "content": "Automated review flagged an access anomaly on 07/12/2025 at 03:21.\nUser badge SW-072 failed two scans but was later granted manual override by an account no longer active.\nLogs show no reason for override.\n\nRecommend cross-checking override authority.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0184",
+    "title": "Encrypted Payload Detected",
+    "sender": "it-support@intra.d9",
+    "content": "Network packet inspection uncovered a 1.2 MB payload marked as ‘confidential’ but encrypted with a nonstandard cipher.\nOrigin IP resolves to internal subnet but header metadata is missing department tags.\n\nNo automated decryption possible. Advise manual review.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0196",
+    "title": "Maintenance Override Request",
+    "sender": "facilities@intra.d9",
+    "content": "Received an urgent override to suspend air filtration in Lab Block 3 for unspecified calibration work.\nRequest signed by ‘HQ-ADMIN’ without department code.\n\nProceed with caution; system defaults to lockdown if filters offline > 2 hrs.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0203",
+    "title": "Metadata Cleaning Notice",
+    "sender": "records@intra.d9",
+    "content": "Scheduled metadata purge for archived documents dated before 01/01/2024.\nSome records flagged 'inconsistent' will be overwritten without backup.\n\nIf any items require preservation, submit exception form by EOD.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
+  },
+  {
+    "id": "DOC-0217",
+    "title": "Unscheduled System Reboot",
+    "sender": "it-support@intra.d9",
+    "content": "Automated alert: core router in Sector 2 initiated reboot at 02:47:13, local time.\nNo maintenance window was scheduled and no technician logs exist.\n\nIf recurrence > 1, escalate to network integrity team.",
+    "status": "unread",
+    "action": "",
+    "notes": "",
+    "available": "True"
   }
 ]

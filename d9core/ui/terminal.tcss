@@ -3,13 +3,26 @@ Button {
     width: 24;
 }
 
-Horizontal > VerticalScroll {
+Header {
+    height: 3;
+}
+
+#main-view > VerticalScroll {
     width: 24;
+    margin: 0 2 0 0;
+}
+
+#main-view > ContentSwitcher {
+    margin: 1 2 0 0;
 }
 
 .header {
     margin: 1 0 0 2;
     text-style: bold;
+}
+
+#document-tabs Horizontal  {
+    align: center middle;
 }
 
 #content-view .approve {
