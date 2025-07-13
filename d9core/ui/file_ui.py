@@ -23,7 +23,7 @@ class DocumentView(Container):
                     yield Static(f"[bold]From:[/bold] {document["sender"]}")
                     yield Static(f"[bold]Title:[/bold] {document["title"]}")
                     yield Rule()
-                    yield Markdown("## Content\n" + document["content"])
+                    yield Markdown("# Content\n" + document["content"])
                     yield Rule()
                     yield Static("" if document["action"] == "" else f"[bold]{document["action"].upper()}[/bold] recorded for {document["id"]}", id=f"doc--{document['id']}--feedback")
                     yield Horizontal(
@@ -47,6 +47,16 @@ class DocumentView(Container):
 
             feedback = self.query_one(f"#doc--{document_id}--feedback", Static)
             feedback.update(f"[bold]{action.upper()}[/bold] recorded for {document_id}")
+
+            pane = self.query_one(f"#{document_id}",TabPane)
+            pane.remove_class("approve", "escalate")
+            pane.add_class(action)
+            pane.TabPaneMessage
+
+            tab_btn = self.query_one(f"#--content-tab-{document_id}")
+            print("HIIIIII!: ",tab_btn._selector_names)
+            tab_btn.remove_class("approve", "escalate")
+            tab_btn.add_class(action)
 
             for action in ("approve", "escalate"):
                 button = self.query_one(f"#doc--{document_id}--{action}", Button)

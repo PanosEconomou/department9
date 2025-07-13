@@ -11,3 +11,22 @@ Horizontal > VerticalScroll {
     margin: 1 0 0 2;
     text-style: bold;
 }
+
+#content-view .approve {
+  color: $success-darken-1;
+}
+
+#content-view .escalate {
+  color: $warning-darken-1;
+}
+
+#content-view ContentTab.approve.-active,
+#content-view ContentTab.approve:hover {
+  color: $success-lighten-2;
+}
+
+#content-view ContentTab.escalate.-active, 
+#content-view ContentTab.escalate:hover {
+  color: $warning-lighten-2;
+}
+
