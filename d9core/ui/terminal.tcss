@@ -27,6 +27,6 @@ Horizontal > VerticalScroll {
 
 #content-view ContentTab.escalate.-active, 
 #content-view ContentTab.escalate:hover {
-  color: $warning-lighten-2;
+  color: $warning-lighten-1;
 }
 

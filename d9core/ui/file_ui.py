@@ -18,7 +18,7 @@ class DocumentView(Container):
             for document in self.data:
                 if document["available"] != "True":
                     continue
-                with TabPane(document["id"],id=document["id"]):
+                with TabPane(document["id"],id=document["id"]) as pane:
                     yield Static(f"[bold]Document ID:[/bold] {document["id"]}")
                     yield Static(f"[bold]From:[/bold] {document["sender"]}")
                     yield Static(f"[bold]Title:[/bold] {document["title"]}")
@@ -31,7 +31,23 @@ class DocumentView(Container):
                         Button.warning("Escalate",  id=f"doc--{document['id']}--escalate",  disabled=document["action"] != ""),
                         id = f"{document["id"]}-actions"
                     )
-                    
+                    if document["action"] != "":
+                        pane.add_class(document["action"])
+
+    def on_mount(self) -> None:
+        if not self.data:
+            return
+        
+        for document in self.data:
+            if document["available"] != "True":
+                    continue
+            if document["action"] != "":
+                pane = self.query_one(f"#{document["id"]}",TabPane)
+                pane.add_class(document["action"])
+                tab_btn = self.query_one(f"#--content-tab-{document["id"]}")
+                tab_btn.add_class(document["action"])
+                
+                                
     
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button_id = event.button.id
@@ -51,10 +67,8 @@ class DocumentView(Container):
             pane = self.query_one(f"#{document_id}",TabPane)
             pane.remove_class("approve", "escalate")
             pane.add_class(action)
-            pane.TabPaneMessage
 
             tab_btn = self.query_one(f"#--content-tab-{document_id}")
-            print("HIIIIII!: ",tab_btn._selector_names)
             tab_btn.remove_class("approve", "escalate")
             tab_btn.add_class(action)
 
