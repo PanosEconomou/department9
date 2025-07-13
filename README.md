@@ -9,7 +9,8 @@ To get started clone this repository and then crete a python environment directl
 ``` shell
 python -m venv env
 sh ./env/bin/activate
-pip install requirements.txt
+pip install -r requirements.txt
+pip install -e .
 ```
 
 Now you should have a local python environment set up with all the necessary packages. In addition you will need to install [Hermes 3](https://ollama.com/library/hermes3) which is the LLM that the NPCs use for their interaction it is running locally through [Ollama](https://ollama.com). To install in linux run
