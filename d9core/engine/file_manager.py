@@ -46,3 +46,10 @@ def update_notes(data: list[dict], id: str, notes: str = "read") -> None:
         if document["id"] == id:
             document["notes"] = notes
             break
+
+def get_entry(data: list[dict], id:str) -> dict:
+    for document in data:
+        if document["id"] == id:
+            return document
+        
+    return {}

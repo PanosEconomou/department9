@@ -7,6 +7,11 @@ Header {
     height: 3;
 }
 
+Input.invalid {
+  border: tall $error ;
+}
+
+
 #main-view > VerticalScroll {
     width: 24;
     margin: 0 2 0 0;

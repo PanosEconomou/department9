@@ -2,7 +2,7 @@ from textual.app import ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.widgets import Markdown, TabbedContent, TabPane, Rule, Static, Button, Input
 
-from d9core.engine.file_manager import get_documents, update_action, update_notes, save_documents
+from d9core.engine.file_manager import get_documents, update_action, update_notes, save_documents, get_entry
 
 class DocumentView(Container):
 
@@ -60,6 +60,9 @@ class DocumentView(Container):
         self.query_one(f"#tabs-scroll").parent.focus() # type: ignore
 
     def process_action(self, document_id, action) -> None:
+        if get_entry(self.data, document_id)["action"] != "":
+            return
+        
         update_action(self.data, document_id, action)
         save_documents(self.data)
 
