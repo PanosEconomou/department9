@@ -11,6 +11,14 @@ Input.invalid {
   border: tall $error ;
 }
 
+Sparkline {
+    width: 100%;
+    # background: red;
+}
+
+#document-tabs {
+  height: 95%;
+}
 
 #main-view > VerticalScroll {
     width: 24;

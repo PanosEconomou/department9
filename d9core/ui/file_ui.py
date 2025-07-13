@@ -1,44 +1,47 @@
 from textual.app import ComposeResult
+from textual.reactive import Reactive
 from textual.containers import Container, Horizontal, Vertical
-from textual.widgets import Markdown, TabbedContent, TabPane, Rule, Static, Button, Input
+from textual.widgets import Markdown, TabbedContent, TabPane, Rule, Static, Button, Input, Sparkline
 
 from d9core.engine.file_manager import get_documents, update_action, update_notes, save_documents, get_entry
 
 class DocumentView(Container):
 
     data = get_documents()
+    progress: Reactive[list[float]] = Reactive([0.5 if document["action"] == "approve" else 1 if document["action"] == "escalate" else 0 for document in data])
 
     def compose(self) -> ComposeResult:
 
         if not self.data:
             yield Markdown("No documents yet.")
             return
-        
-        with TabbedContent(initial=self.data[-1]["id"], id="document-tabs"):
-            for document in self.data:
-                if document["available"] != "True":
-                    continue
-                with TabPane(document["id"],id=document["id"]) as pane:
-                    with Vertical():
-                        yield Static(f"[bold]Document ID:[/bold] {document["id"]}")
-                        yield Static(f"[bold]From:[/bold] {document["sender"]}")
-                        yield Static(f"[bold]Title:[/bold] {document["title"]}")
-                        yield Rule()
-                        yield Markdown("# Content\n" + document["content"])
-                        yield Rule()
-                        yield Static("" if document["action"] == "" else f"[bold]{document["action"].upper()}[/bold] recorded for {document["id"]}", id=f"doc--{document['id']}--feedback")
-                        yield Horizontal(
-                            Button.success("Approve",   id=f"doc--{document['id']}--approve",   disabled=document["action"] != ""),
-                            Button.warning("Escalate",  id=f"doc--{document['id']}--escalate",  disabled=document["action"] != ""),
-                            id = f"{document["id"]}-actions"
-                        )
-                    with Vertical():
-                        yield Static("" if document["notes"] == "" else f"[bold]Escalation note saved:[/bold]\n{document["notes"]}", id=f"{document["id"]}--feedback")
-                        yield Input(
-                            placeholder="Enter escalation description…",
-                            id=f"{document["id"]}--input",
-                            disabled=True
-                        )
+        with Vertical():
+            with TabbedContent(initial=self.data[-1]["id"], id="document-tabs"):
+                for document in self.data:
+                    if document["available"] != "True":
+                        continue
+                    with TabPane(document["id"],id=document["id"]) as pane:
+                        with Vertical():
+                            yield Static(f"[bold]Document ID:[/bold] {document["id"]}")
+                            yield Static(f"[bold]From:[/bold] {document["sender"]}")
+                            yield Static(f"[bold]Title:[/bold] {document["title"]}")
+                            yield Rule()
+                            yield Markdown("# Content\n" + document["content"])
+                            yield Rule()
+                            yield Static("" if document["action"] == "" else f"[bold]{document["action"].upper()}[/bold] recorded for {document["id"]}", id=f"doc--{document['id']}--feedback")
+                            yield Horizontal(
+                                Button.success("Approve",   id=f"doc--{document['id']}--approve",   disabled=document["action"] != ""),
+                                Button.warning("Escalate",  id=f"doc--{document['id']}--escalate",  disabled=document["action"] != ""),
+                                id = f"{document["id"]}-actions"
+                            )
+                        with Vertical():
+                            yield Static("" if document["notes"] == "" else f"[bold]Escalation note saved:[/bold]\n{document["notes"]}", id=f"{document["id"]}--feedback")
+                            yield Input(
+                                placeholder="Enter escalation description…",
+                                id=f"{document["id"]}--input",
+                                disabled=True
+                            )
+            yield Sparkline(self.progress,id="progress-line")
 
     def on_mount(self) -> None:
         if not self.data:
@@ -55,9 +58,15 @@ class DocumentView(Container):
                 pane.add_class(document["action"])
                 tab_btn = self.query_one(f"#--content-tab-{document["id"]}")
                 tab_btn.add_class(document["action"])
-                
+
     def on_show(self) -> None:
         self.query_one(f"#tabs-scroll").parent.focus() # type: ignore
+
+    def spark_update(self) -> None:
+        self.progress = [0.5 if document["action"] == "approve" else 1 if document["action"] == "escalate" else 0 for document in self.data]
+        progress_bar = self.query_one("#progress-line",Sparkline)
+        progress_bar.data = self.progress
+        progress_bar.refresh()
 
     def process_action(self, document_id, action) -> None:
         if get_entry(self.data, document_id)["action"] != "":
@@ -89,6 +98,8 @@ class DocumentView(Container):
 
         else:
             self.query_one(f"#tabs-scroll").parent.focus() # type: ignore
+
+        self.spark_update()
     
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button_id = event.button.id
